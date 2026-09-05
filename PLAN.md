@@ -4,11 +4,11 @@ Dự án website bán lẻ điện thoại di động bao gồm hai phân hệ c
 - **Trang Khách hàng (Customer / Storefront)**: Xem danh mục, lọc theo hãng (Apple, Samsung), giỏ hàng mua sắm (thêm, sửa, xóa, thanh toán), đồng bộ dữ liệu vào `localStorage` theo đúng Flowchart.
 - **Trang Quản trị (Admin Dashboard)**: Quản lý sản phẩm (CRUD qua RESTful API bằng Axios), tìm kiếm theo tên, sắp xếp theo giá, kiểm tra validation form nhập liệu chặt chẽ.
 
-Toàn bộ dự án tuân thủ mô hình **MVC** (Model - View - Controller - Services), tổ chức **Sass chuẩn 7-1**, đối tượng **OOP** theo đúng sơ đồ lớp và dữ liệu chuẩn từ CyberSoft.
+Toàn bộ dự án tuân thủ mô hình **MVC** (Model - View - Controller - Services), sử dụng **CSS thuần** (`asset/css/style.css`) kết hợp **Bootstrap 5.3**, đối tượng **OOP** theo đúng sơ đồ lớp và dữ liệu chuẩn từ CyberSoft.
 
 ---
 
-## Cấu trúc thư mục dự án (Tổ chức Sass 7-1 & MVC)
+## Cấu trúc thư mục dự án (Chuẩn MVC)
 
 ```
 Phone-Shop (Capstone-JS)/
@@ -25,32 +25,9 @@ Phone-Shop (Capstone-JS)/
 │       └── index.html               # Giao diện trang Admin Dashboard
 ├── asset/                           # Tài nguyên dùng chung cho nhiều trang
 │   ├── css/
-│   │   └── style.css                # CSS tổng hợp
-│   ├── img/                         # Thư mục hình ảnh
-│   │   └── .gitkeep
-│   └── sass/                        # Tổ chức chuẩn Sass 7-1
-│       ├── abstracts/
-│       │   ├── _variables.scss      # Biến màu sắc, font, spacing
-│       │   └── _mixins.scss         # Responsive breakpoints, flexbox mixin
-│       ├── base/
-│       │   ├── _reset.scss          # Reset CSS
-│       │   └── _typography.scss     # Font chữ, tiêu đề, văn bản
-│       ├── components/
-│       │   ├── _buttons.scss        # Nút bấm
-│       │   ├── _cards.scss          # Thẻ sản phẩm
-│       │   ├── _modal.scss          # Modal thêm/sửa, dialog
-│       │   └── _cart.scss           # Bảng giỏ hàng, badge
-│       ├── layout/
-│       │   ├── _header.scss         # Header, navbar
-│       │   └── _footer.scss         # Chân trang
-│       ├── pages/
-│       │   ├── _customer.scss       # Style riêng trang bán hàng
-│       │   └── _admin.scss          # Style riêng trang quản trị
-│       ├── themes/
-│       │   └── _theme.scss          # Chế độ màu sắc
-│       ├── vendors/
-│       │   └── _custom.scss         # Tùy biến thư viện ngoài (Bootstrap)
-│       └── main.scss                # Tập tin gom import toàn bộ Sass
+│   │   └── style.css                # CSS tùy biến dùng chung
+│   └── img/                         # Thư mục hình ảnh
+│       └── .gitkeep
 ├── customer/                        # Phân hệ Khách hàng
 │   ├── controller/
 │   │   └── main.js                  # Điều khiển hiển thị sản phẩm, lọc, giỏ hàng
@@ -161,8 +138,7 @@ Phone-Shop (Capstone-JS)/
   - Trang chủ Khách hàng (Customer Store) trực tiếp.
   - Trên Navbar có mục **"Quản trị (Admin)"**, click chuyển sang `./admin/view/index.html`.
   - Trên trang Admin có nút **"Về trang bán hàng"** chuyển ngược về `../../index.html`.
-- **Tổ chức Sass 7-1**:
-  - Thư mục `asset/sass/` đầy đủ 7 thư mục chuẩn.
-  - `main.scss` biên dịch ra `asset/css/style.css` dùng chung.
+- **CSS thuần**:
+  - Dùng trực tiếp file `asset/css/style.css` kết hợp với các class tiện ích của **Bootstrap 5.3**.
+  - Không cần cài đặt compiler hay biên dịch Sass.
   - Responsive hoàn chỉnh cho Mobile, Tablet và Desktop.
-
