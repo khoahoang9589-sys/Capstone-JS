@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberPhone - Cửa Hàng Điện Thoại Chính Hãng</title>
+
+  <!-- Google Font Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome 6.5.2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Shared Custom CSS -->
+  <link rel="stylesheet" href="../../asset/css/style.css" />
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="../../index.html">
+          <i class="fa-solid fa-mobile-screen-button text-primary fs-3 me-2"></i>
+          <span>Cyber<span class="text-primary">Phone</span></span>
+        </a>
+
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a class="nav-link active fw-medium" aria-current="page" href="../../index.html">
+                <i class="fa-solid fa-store me-1"></i> Gian Hàng
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-medium text-warning" href="../../admin/view/index.html">
+                <i class="fa-solid fa-shield-halved me-1"></i> Quản Trị Viên (Admin)
+              </a>
+            </li>
+          </ul>
+
+          <!-- Cart Button -->
+          <div class="d-flex">
+            <button class="btn btn-outline-light position-relative px-3 py-2" data-bs-toggle="modal" data-bs-target="#cartModal" id="btnCart">
+              <i class="fa-solid fa-cart-shopping me-2"></i>
+              <span>Giỏ hàng</span>
+              <span id="cartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero / Banner -->
+    <section class="bg-white border-bottom py-4 py-md-5 mb-4">
+      <div class="container text-center">
+        <h1 class="display-6 fw-bold mb-2">Thế Giới Điện Thoại Thông Minh</h1>
+        <p class="text-secondary mb-0">Cung cấp các dòng điện thoại iPhone & Samsung chính hãng với mức giá tốt nhất</p>
+      </div>
+    </section>
+
+    <!-- Filter & Product Section -->
+    <section class="container mb-5">
+      <!-- Filter Bar -->
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center bg-white p-3 rounded-3 shadow-sm border mb-4 gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-filter text-primary"></i>
+          <span class="fw-semibold">Lọc theo hãng:</span>
+          <select id="selectProductType" class="form-select form-select-sm w-auto">
+            <option value="all">Tất cả sản phẩm</option>
+            <option value="samsung">Samsung</option>
+            <option value="iphone">iPhone (Apple)</option>
+          </select>
+        </div>
+
+        <div class="text-secondary small">
+          <span id="productCount">Đang tải sản phẩm...</span>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="productList" class="row g-4">
+        <!-- Danh sách sản phẩm được render động bằng JavaScript -->
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Đang tải...</span>
+          </div>
+          <p class="mt-3 text-secondary">Đang tải danh sách sản phẩm...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Giỏ Hàng -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title d-flex align-items-center" id="cartModalLabel">
+            <i class="fa-solid fa-cart-shopping me-2"></i> Giỏ Hàng Của Bạn
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col" class="text-center" style="width: 50px;">#</th>
+                  <th scope="col" style="width: 70px;">Ảnh</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col" class="text-end">Đơn giá</th>
+                  <th scope="col" class="text-center" style="width: 130px;">Số lượng</th>
+                  <th scope="col" class="text-end">Thành tiền</th>
+                  <th scope="col" class="text-center" style="width: 60px;">Xóa</th>
+                </tr>
+              </thead>
+              <tbody id="cartTableBody">
+                <!-- Nội dung giỏ hàng render động từ JavaScript -->
+                <tr>
+                  <td colspan="7" class="text-center py-4 text-muted">
+                    <i class="fa-regular fa-folder-open fs-3 d-block mb-2"></i>
+                    Giỏ hàng đang trống
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light d-flex justify-content-between align-items-center">
+          <div>
+            <span class="fw-semibold">Tổng thanh toán: </span>
+            <span id="totalAmount" class="text-danger fw-bold fs-5 ms-1">0</span>
+            <span class="text-danger fw-bold"> $</span>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              Tiếp tục mua
+            </button>
+            <button type="button" class="btn btn-outline-danger" id="btnClearCart">
+              <i class="fa-solid fa-trash-can me-1"></i> Xóa hết
+            </button>
+            <button type="button" class="btn btn-success" id="btnCheckout">
+              <i class="fa-solid fa-credit-card me-1"></i> Thanh toán
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-secondary py-4 mt-auto">
+    <div class="container text-center">
+      <p class="mb-1 text-light fw-medium">CyberPhone - Dự án Capstone JavaScript</p>
+      <small>© 2026 CyberSoft Academy. Bản quyền thuộc về học viên.</small>
+    </div>
+  </footer>
+
+  <!-- Thư viện JS -->
+  <!-- Bootstrap 5.3.3 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Project Scripts -->
+  <script src="../model/Product.js"></script>
+  <script src="../model/CartItem.js"></script>
+  <script src="../services/productService.js"></script>
+  <script src="../controller/main.js"></script>
+</body>
+</html>
+
