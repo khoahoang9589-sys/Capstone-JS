@@ -1,2 +1,2 @@
-import { Product } from "../model/Product";
-import { Validation } from "../model/Validation";
+import { Product } from "../model/Product.js";
+import { Validation } from "../model/Validation.js";

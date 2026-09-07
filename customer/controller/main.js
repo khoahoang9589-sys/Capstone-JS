@@ -1,1 +1,1 @@
-import { Cart } from "../model/CartItem";
+import { Cart } from "../model/CartItem.js";
