@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberPhone Admin - Quản Lý Sản Phẩm</title>
+  <title>CyberTech Admin - Quản Lý Sản Phẩm (Laptop & iPhone)</title>
 
   <!-- Google Font Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <!-- Shared Custom CSS -->
-  <link rel="stylesheet" href="../../asset/css/style.css" />
+  <link rel="stylesheet" href="../../asset/css/main.css" />
 </head>
 <body class="bg-light">
   <!-- Header / Navbar Admin -->
@@ -26,8 +26,8 @@
       <div class="container-fluid px-lg-5">
         <!-- Brand -->
         <a class="navbar-brand fw-bold d-flex align-items-center" href="./index.html">
-          <i class="fa-solid fa-shield-halved text-warning fs-4 me-2"></i>
-          <span>CyberPhone <span class="badge bg-warning text-dark fs-6 ms-1">Admin</span></span>
+          <i class="fa-solid fa-laptop-code text-warning fs-4 me-2"></i>
+          <span>CyberTech <span class="badge bg-warning text-dark fs-6 ms-1">Admin</span></span>
         </a>
 
         <!-- Right navigation -->
@@ -47,7 +47,7 @@
         <div class="card-body p-4">
           <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <div>
-              <h2 class="fw-bold mb-1 fs-4 text-dark">Quản Lý Danh Mục Điện Thoại</h2>
+              <h2 class="fw-bold mb-1 fs-4 text-dark">Quản Lý Danh Mục Laptop & iPhone</h2>
               <p class="text-secondary small mb-0">Thêm, sửa, xóa, tìm kiếm và sắp xếp các sản phẩm trong hệ thống</p>
             </div>
 
@@ -68,7 +68,7 @@
                 <span class="input-group-text bg-white border-end-0">
                   <i class="fa-solid fa-magnifying-glass text-muted"></i>
                 </span>
-                <input type="text" id="txtSearch" class="form-control border-start-0 ps-0" placeholder="Tìm kiếm theo tên điện thoại..." />
+                <input type="text" id="txtSearch" class="form-control border-start-0 ps-0" placeholder="Tìm kiếm theo tên sản phẩm..." />
               </div>
             </div>
 
@@ -104,20 +104,20 @@
                   <th scope="col" class="text-center" style="width: 60px;">STT</th>
                   <th scope="col" style="width: 80px;">Ảnh</th>
                   <th scope="col">Tên sản phẩm</th>
-                  <th scope="col" class="text-end" style="width: 120px;">Giá</th>
-                  <th scope="col" style="width: 140px;">Màn hình</th>
-                  <th scope="col" style="width: 150px;">Camera</th>
-                  <th scope="col" style="width: 110px;">Hãng</th>
-                  <th scope="col" style="min-width: 200px;">Mô tả</th>
+                  <th scope="col" class="text-end" style="width: 120px;">Giá ($)</th>
+                  <th scope="col" style="width: 130px;">Phân loại</th>
+                  <th scope="col" style="min-width: 250px;">Mô tả</th>
                   <th scope="col" class="text-center" style="width: 130px;">Hành động</th>
                 </tr>
               </thead>
               <tbody id="tblDanhSachSP">
                 <!-- Danh sách sản phẩm render động từ JavaScript -->
                 <tr>
-                  <td colspan="9" class="text-center py-5 text-muted">
-                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
-                    Đang tải dữ liệu sản phẩm từ máy chủ...
+                  <td colspan="7" class="text-center py-5 text-muted">
+                    
+
+
+                    
                   </td>
                 </tr>
               </tbody>
@@ -135,7 +135,7 @@
         <!-- Modal Header -->
         <div class="modal-header bg-dark text-white">
           <h5 class="modal-title d-flex align-items-center" id="productModalLabel">
-            <i class="fa-solid fa-mobile-screen-button me-2 text-warning"></i>
+            <i class="fa-solid fa-laptop-code me-2 text-warning"></i>
             <span>Thông Tin Sản Phẩm</span>
           </h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="btnCloseHeader"></button>
@@ -150,58 +150,37 @@
             <div class="row g-3">
               <!-- Tên sản phẩm -->
               <div class="col-md-6">
-                <label for="phoneName" class="form-label fw-semibold">Tên điện thoại <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="phoneName" placeholder="VD: iPhone 14 Pro Max" />
+                <label for="phoneName" class="form-label fw-semibold">Tên sản phẩm <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="phoneName" placeholder="VD: MacBook Pro 14 M3 / iPhone 15 Pro Max" />
                 <span id="tbPhoneName" class="sp-thongbao text-danger"></span>
               </div>
 
               <!-- Giá bán -->
               <div class="col-md-6">
                 <label for="phonePrice" class="form-label fw-semibold">Giá bán ($) <span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="phonePrice" placeholder="VD: 1099" min="1" />
+                <input type="number" class="form-control" id="phonePrice" placeholder="VD: 1999" min="1" />
                 <span id="tbPhonePrice" class="sp-thongbao text-danger"></span>
               </div>
 
-              <!-- Hãng sản xuất -->
+              <!-- Phân loại (Type) -->
               <div class="col-md-6">
-                <label for="phoneType" class="form-label fw-semibold">Hãng sản xuất <span class="text-danger">*</span></label>
+                <label for="phoneType" class="form-label fw-semibold">Phân loại sản phẩm <span class="text-danger">*</span></label>
                 <select class="form-select" id="phoneType">
-                  <option value="">-- Chọn hãng --</option>
-                  <option value="iphone">Apple (iPhone)</option>
-                  <option value="samsung">Samsung</option>
+                  <option value="">-- Chọn phân loại --</option>
+                  <option value="LAPTOP">LAPTOP (Máy tính xách tay)</option>
+                  <option value="iphone">iphone (Điện thoại iPhone)</option>
                 </select>
                 <span id="tbPhoneType" class="sp-thongbao text-danger"></span>
               </div>
 
-              <!-- Màn hình -->
-              <div class="col-md-6">
-                <label for="phoneScreen" class="form-label fw-semibold">Màn hình <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="phoneScreen" placeholder="VD: OLED 6.7 inch" />
-                <span id="tbPhoneScreen" class="sp-thongbao text-danger"></span>
-              </div>
-
-              <!-- Camera sau -->
-              <div class="col-md-6">
-                <label for="phoneBackCam" class="form-label fw-semibold">Camera sau <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="phoneBackCam" placeholder="VD: 48 MP & 12 MP, 12 MP" />
-                <span id="tbPhoneBackCam" class="sp-thongbao text-danger"></span>
-              </div>
-
-              <!-- Camera trước -->
-              <div class="col-md-6">
-                <label for="phoneFrontCam" class="form-label fw-semibold">Camera trước <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="phoneFrontCam" placeholder="VD: 12 MP" />
-                <span id="tbPhoneFrontCam" class="sp-thongbao text-danger"></span>
-              </div>
-
               <!-- Hình ảnh URL -->
-              <div class="col-12">
+              <div class="col-md-6">
                 <label for="phoneImg" class="form-label fw-semibold">Link hình ảnh (URL) <span class="text-danger">*</span></label>
                 <input type="url" class="form-control" id="phoneImg" placeholder="https://cdn.tgdd.vn/..." />
                 <span id="tbPhoneImg" class="sp-thongbao text-danger"></span>
               </div>
 
-              <!-- Mô tả -->
+              <!-- Mô tả (description) -->
               <div class="col-12">
                 <label for="phoneDesc" class="form-label fw-semibold">Mô tả sản phẩm <span class="text-danger">*</span></label>
                 <textarea class="form-control" id="phoneDesc" rows="3" placeholder="Nhập mô tả tính năng nổi bật..."></textarea>
@@ -232,7 +211,7 @@
   <!-- Footer Admin -->
   <footer class="bg-dark text-secondary py-3 mt-auto">
     <div class="container-fluid px-lg-5 text-center">
-      <small>© 2026 CyberPhone Admin Dashboard - CyberSoft Capstone Project</small>
+      <small>© 2026 CyberTech Admin Dashboard - CyberSoft Capstone Project</small>
     </div>
   </footer>
 
@@ -242,11 +221,7 @@
   <!-- Axios CDN -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <!-- Project Scripts -->
-  <script src="../model/Product.js"></script>
-  <script src="../services/productService.js"></script>
-  <script src="../controller/validation.js"></script>
-  <script src="../controller/main.js"></script>
+  <!-- Project Scripts (ES Module) -->
+  <script type="module" src="../controller/main.js"></script>
 </body>
 </html>
-

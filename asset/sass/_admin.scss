@@ -1,0 +1,38 @@
+// ==========================================
+// Admin Page (Trang Quản Trị)
+// ==========================================
+
+// Ảnh đại diện trong bảng Admin
+.admin-table-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  border: 1px solid $border-color;
+  padding: 4px;
+}
+
+// Thông báo lỗi Validation
+.sp-thongbao {
+  display: block;
+  min-height: 20px;
+  font-size: 0.825rem;
+  color: $danger-color;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+// Bảng quản lý dữ liệu
+.table {
+  th {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  td {
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+}
+

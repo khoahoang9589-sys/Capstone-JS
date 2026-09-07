@@ -1,1 +1,1 @@
-main
+import { Cart } from "../model/CartItem";

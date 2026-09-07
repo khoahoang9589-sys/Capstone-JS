@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card {
+  transition: all 0.25s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+.product-card:hover .card-img-top {
+  transform: scale(1.06);
+}
+.product-card .card-img-wrap {
+  position: relative;
+  height: 200px;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+.product-card .card-img-wrap .card-img-top {
+  max-height: 100%;
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.product-card .card-body {
+  padding: 1.25rem;
+}
+.product-card .product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #dc2626;
+}
+.product-card .product-specs {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+.product-card .product-specs li {
+  margin-bottom: 3px;
+}
+.product-card .product-specs li:last-child {
+  margin-bottom: 0;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-qty {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.admin-table-img {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 4px;
+}
+
+.sp-thongbao {
+  display: block;
+  min-height: 20px;
+  font-size: 0.825rem;
+  color: #dc2626;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.table th {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.table td {
+  font-size: 0.9rem;
+  vertical-align: middle;
+}

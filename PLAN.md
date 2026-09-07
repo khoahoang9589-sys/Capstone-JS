@@ -4,38 +4,42 @@ Dự án website bán lẻ điện thoại di động bao gồm hai phân hệ c
 - **Trang Khách hàng (Customer / Storefront)**: Xem danh mục, lọc theo hãng (Apple, Samsung), giỏ hàng mua sắm (thêm, sửa, xóa, thanh toán), đồng bộ dữ liệu vào `localStorage` theo đúng Flowchart.
 - **Trang Quản trị (Admin Dashboard)**: Quản lý sản phẩm (CRUD qua RESTful API bằng Axios), tìm kiếm theo tên, sắp xếp theo giá, kiểm tra validation form nhập liệu chặt chẽ.
 
-Toàn bộ dự án tuân thủ mô hình **MVC** (Model - View - Controller - Services), sử dụng **CSS thuần** (`asset/css/style.css`) kết hợp **Bootstrap 5.3**, đối tượng **OOP** theo đúng sơ đồ lớp và dữ liệu chuẩn từ CyberSoft.
+Toàn bộ dự án tuân thủ mô hình **MVC** (Model - View - Controller), sử dụng **SASS đơn giản** (`asset/sass/`) biên dịch ra `asset/css/style.css` kết hợp **Bootstrap 5.3**, đối tượng **OOP** theo đúng sơ đồ lớp và dữ liệu chuẩn từ CyberSoft.
 
 ---
 
-## Cấu trúc thư mục dự án (Chuẩn MVC)
+## Cấu trúc thư mục dự án (Chuẩn MVC & SASS đơn giản)
 
 ```
 Phone-Shop (Capstone-JS)/
 ├── .vscode/
+│   └── settings.json                # Cấu hình tự động biên dịch SASS
 ├── admin/                           # Phân hệ Quản trị viên
 │   ├── controller/
-│   │   ├── main.js                  # Điều khiển CRUD, tìm kiếm, sắp xếp
-│   │   └── validation.js            # Lớp xác thực form nhập liệu
+│   │   ├── callAPI.js               # Gọi API với Axios
+│   │   └── main.js                  # Điều khiển CRUD, tìm kiếm, sắp xếp
 │   ├── model/
-│   │   └── Product.js               # Lớp đối tượng Product
-│   ├── services/
-│   │   └── productService.js        # Gọi API với Axios
+│   │   ├── Product.js               # Lớp đối tượng Product
+│   │   └── Validation.js            # Lớp xác thực form nhập liệu
 │   └── view/
 │       └── index.html               # Giao diện trang Admin Dashboard
-├── asset/                           # Tài nguyên dùng chung cho nhiều trang
+├── asset/                           # Tài nguyên dùng chung cho 2 trang
 │   ├── css/
-│   │   └── style.css                # CSS tùy biến dùng chung
-│   └── img/                         # Thư mục hình ảnh
-│       └── .gitkeep
+│   │   └── style.css                # CSS tổng hợp (biên dịch từ SASS)
+│   ├── img/                         # Thư mục hình ảnh
+│   └── sass/                        # SASS đơn giản, dễ quản lý
+│       ├── _variables.scss          # Biến màu sắc, font chữ, shadow
+│       ├── _base.scss               # Cài đặt nền tảng, typography, body
+│       ├── _customer.scss           # Style riêng trang Gian hàng (Card, Giỏ hàng)
+│       ├── _admin.scss              # Style riêng trang Quản trị (Table, Validation)
+│       └── main.scss                # File SASS chính gom import các file trên
 ├── customer/                        # Phân hệ Khách hàng
 │   ├── controller/
+│   │   ├── callAPI.js               # Gọi API lấy danh sách sản phẩm
 │   │   └── main.js                  # Điều khiển hiển thị sản phẩm, lọc, giỏ hàng
 │   ├── model/
-│   │   ├── CartItem.js              # Lớp CartItem (id, name, price, img, quantity)
+│   │   ├── CartItem.js              # Lớp CartItem
 │   │   └── Product.js               # Lớp Product
-│   ├── services/
-│   │   └── productService.js        # Gọi API lấy sản phẩm
 │   └── view/
 │       └── index.html               # Giao diện trang bán hàng customer
 ├── data-backup.json                 # Dữ liệu mẫu chuẩn CyberSoft
@@ -61,7 +65,7 @@ Phone-Shop (Capstone-JS)/
   - Các hàm tiện ích: `themGH(sp)`, `timViTri(id)`, `xoaGH(id)`, `capNhatSoLuong(id, soLuong)`, `tinhTongTien()`.
 
 #### 2. Hiển thị danh sách sản phẩm & Bộ lọc
-- Gọi API lấy dữ liệu sản phẩm từ backend (`fetchProducts`).
+- Gọi API lấy dữ liệu sản phẩm từ backend (`callAPI.js`).
 - Viết hàm `renderProducts(list)`:
   - Tạo các thẻ `<div>` card sản phẩm chuẩn Bootstrap Grid (ảnh, tên, giá tiền, thông số màn hình, camera trước/sau, mô tả, nút "Thêm vào giỏ").
 - Bộ lọc loại sản phẩm (Dropdown Select):
@@ -98,20 +102,20 @@ Phone-Shop (Capstone-JS)/
 ### PHẦN 2: TRANG QUẢN TRỊ (ADMIN DASHBOARD)
 
 #### 1. Gọi API với Axios & Nghiệp vụ CRUD
-- Sử dụng thư viện **Axios** trong `admin/services/productService.js`:
+- Sử dụng thư viện **Axios** trong `admin/controller/callAPI.js`:
   - `fetchProducts()`: `GET /products` -> hiển thị danh sách sản phẩm lên bảng Table.
   - `fetchProductById(id)`: `GET /products/:id` -> lấy dữ liệu chi tiết của 1 sản phẩm.
   - `addProduct(product)`: `POST /products` -> tạo mới sản phẩm trên server.
   - `updateProduct(id, product)`: `PUT /products/:id` -> cập nhật thông tin sản phẩm.
   - `deleteProduct(id)`: `DELETE /products/:id` -> xóa sản phẩm khỏi server.
 - Giao diện bảng danh sách sản phẩm quản trị:
-  - Cột: STT, Tên sản phẩm, Giá, Hình ảnh, Mô tả, Hãng, Thao tác (Sửa / Xóa).
+  - Cột: STT, Tên sản phẩm, Giá, Hình ảnh, Màn hình, Camera, Hãng, Mô tả, Thao tác (Sửa / Xóa).
   - Nút "Thêm Sản Phẩm Mới": Mở modal form với các trường thông tin trống.
   - Nút "Sửa": Mở modal form, tự động điền thông tin cũ của sản phẩm để cập nhật.
   - Nút "Xóa": Hiển thị hộp thoại xác nhận trước khi gọi API xóa.
 
 #### 2. Kiểm tra tính hợp lệ dữ liệu (Form Validation)
-- Xây dựng lớp `Validation` (`admin/controller/validation.js`):
+- Xây dựng lớp `Validation` (`admin/model/Validation.js`):
   - `checkEmpty(value, spanId, message)`: Bắt buộc nhập không được để trống.
   - `checkPrice(value, spanId, message)`: Giá phải là số và lớn hơn 0.
   - `checkImageUrl(value, spanId, message)`: Link ảnh phải là URL hợp lệ.
@@ -138,7 +142,7 @@ Phone-Shop (Capstone-JS)/
   - Trang chủ Khách hàng (Customer Store) trực tiếp.
   - Trên Navbar có mục **"Quản trị (Admin)"**, click chuyển sang `./admin/view/index.html`.
   - Trên trang Admin có nút **"Về trang bán hàng"** chuyển ngược về `../../index.html`.
-- **CSS thuần**:
-  - Dùng trực tiếp file `asset/css/style.css` kết hợp với các class tiện ích của **Bootstrap 5.3**.
-  - Không cần cài đặt compiler hay biên dịch Sass.
+- **Tổ chức SASS đơn giản**:
+  - `asset/sass/` gồm các file `_variables.scss`, `_base.scss`, `_customer.scss`, `_admin.scss` và `main.scss`.
+  - Biên dịch tự động ra `asset/css/style.css` thông qua extension Live Sass Compiler hoặc `npx sass`.
   - Responsive hoàn chỉnh cho Mobile, Tablet và Desktop.

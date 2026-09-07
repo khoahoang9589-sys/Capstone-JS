@@ -1,0 +1,25 @@
+// ==========================================
+// Base & Typography (Cơ bản & Font chữ)
+// ==========================================
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+  font-family: $font-family;
+  background-color: $bg-light;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+// Cắt ngắn văn bản 2 dòng
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+

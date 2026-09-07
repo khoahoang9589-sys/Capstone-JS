@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <!-- Shared Custom CSS -->
-  <link rel="stylesheet" href="./asset/css/style.css" />
+  <link rel="stylesheet" href="./asset/css/main.css" />
 </head>
 <body>
   <!-- Header / Navbar -->
@@ -69,8 +69,8 @@
     <!-- Hero / Banner -->
     <section class="bg-white border-bottom py-4 py-md-5 mb-4">
       <div class="container text-center">
-        <h1 class="display-6 fw-bold mb-2">Thế Giới Điện Thoại Thông Minh</h1>
-        <p class="text-secondary mb-0">Cung cấp các dòng điện thoại iPhone & Samsung chính hãng với mức giá tốt nhất</p>
+        <h1 class="display-6 fw-bold mb-2">Thế Giới Laptop & Điện Thoại Chính Hãng</h1>
+        <p class="text-secondary mb-0">Cung cấp các dòng Laptop và iPhone cao cấp với mức giá tốt nhất</p>
       </div>
     </section>
 
@@ -80,27 +80,22 @@
       <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center bg-white p-3 rounded-3 shadow-sm border mb-4 gap-3">
         <div class="d-flex align-items-center gap-2">
           <i class="fa-solid fa-filter text-primary"></i>
-          <span class="fw-semibold">Lọc theo hãng:</span>
+          <span class="fw-semibold">Lọc theo loại:</span>
           <select id="selectProductType" class="form-select form-select-sm w-auto">
             <option value="all">Tất cả sản phẩm</option>
-            <option value="samsung">Samsung</option>
-            <option value="iphone">iPhone (Apple)</option>
+            <option value="LAPTOP">Laptop</option>
+            <option value="iphone">iPhone</option>
           </select>
         </div>
 
-        <div class="text-secondary small">
-          <span id="productCount">Đang tải sản phẩm...</span>
-        </div>
       </div>
 
       <!-- Product Grid -->
       <div id="productList" class="row g-4">
         <!-- Danh sách sản phẩm được render động bằng JavaScript -->
         <div class="col-12 text-center py-5">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Đang tải...</span>
-          </div>
-          <p class="mt-3 text-secondary">Đang tải danh sách sản phẩm...</p>
+
+          
         </div>
       </div>
     </section>
@@ -182,9 +177,6 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <!-- Project Scripts -->
-  <script src="./customer/model/Product.js"></script>
-  <script src="./customer/model/CartItem.js"></script>
-  <script src="./customer/services/productService.js"></script>
-  <script src="./customer/controller/main.js"></script>
+  <script type="module" src="./customer/controller/main.js"></script>
 </body>
 </html>
