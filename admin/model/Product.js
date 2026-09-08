@@ -5,7 +5,7 @@ export class Product {
     this.price = price;
     this.img = img;
     this.description = description;
-    this.type = type; // "LAPTOP" hoặc "iphone"
+    this.type = type; // LAPTOP / PHONE / TABLET / iphone
     this.deleted = deleted;
   }
 }

@@ -45,7 +45,8 @@ main {
 .product-card .card-img-wrap .card-img-top {
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transition: transform 0.3s ease;
 }
 .product-card .card-body {
@@ -73,7 +74,8 @@ main {
 .cart-item-img {
   width: 50px;
   height: 50px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 6px;
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -92,7 +94,8 @@ main {
 .admin-table-img {
   width: 60px;
   height: 60px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 6px;
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -115,6 +118,5 @@ main {
 .table td {
   font-size: 0.9rem;
   vertical-align: middle;
+  text-wrap: auto;
 }
-
-/*# sourceMappingURL=main.css.map */

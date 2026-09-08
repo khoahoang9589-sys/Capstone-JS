@@ -28,7 +28,7 @@ function renderTable(data) {
         <td class="text-center">${index + 1}</td>
         <td><img src="${product.img}" width="50" height="50" style="object-fit:cover; border-radius: 4px;" /></td>
         <td class="fw-semibold">${product.name}</td>
-        <td class="text-end">$${product.price}</td>
+        <td class="text-end">${Number(product.price).toLocaleString()} VNĐ</td>
         <td><span class="badge bg-secondary">${product.type}</span></td>
         <td>${product.description}</td>
         <td class="text-center">
