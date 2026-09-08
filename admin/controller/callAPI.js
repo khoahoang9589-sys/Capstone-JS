@@ -1,14 +1,13 @@
 // Dùng Export
 export class CallApi {
   constructor() {
-    // Đường dẫn API lấy từ MockAPI của bạn
-    this.baseUrl = "https://6a9b8ab10ad174e139e8b634.mockapi.io/Products";
+    this.baseUrl = "https://svcy.myclass.vn/api/ProductApi";
   }
 
   // 1. Lấy danh sách sản phẩm
   fetchProductList() {
     return axios({
-      url: this.baseUrl,
+      url: `${this.baseUrl}/getall`,
       method: "GET",
     });
   }
@@ -16,7 +15,7 @@ export class CallApi {
   // 2. Xóa sản phẩm theo ID
   deleteProduct(id) {
     return axios({
-      url: `${this.baseUrl}/${id}`,
+      url: `${this.baseUrl}/delete/${id}`,
       method: "DELETE",
     });
   }
@@ -24,16 +23,16 @@ export class CallApi {
   // 3. Thêm sản phẩm mới
   addProduct(product) {
     return axios({
-      url: this.baseUrl,
+      url: `${this.baseUrl}/create`,
       method: "POST",
       data: product,
     });
   }
 
-  // 4. Lấy chi tiết 1 sản phẩm theo ID (để đưa dữ liệu lên form khi bấm Sửa)
+  // 4. Lấy chi tiết 1 sản phẩm theo ID
   getProductById(id) {
     return axios({
-      url: `${this.baseUrl}/${id}`,
+      url: `${this.baseUrl}/get/${id}`,
       method: "GET",
     });
   }
@@ -41,7 +40,7 @@ export class CallApi {
   // 5. Cập nhật thông tin sản phẩm
   updateProduct(id, product) {
     return axios({
-      url: `${this.baseUrl}/${id}`,
+      url: `${this.baseUrl}/update/${id}`,
       method: "PUT",
       data: product,
     });
