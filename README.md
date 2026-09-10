@@ -4,7 +4,7 @@ Dự án Capstone môn JavaScript CyberSoft:
 Phụ trách:
 **Hoàng Anh Khoa**
 - HTML/CSS giao diện.
-- Các tính năng `customer`: load sản phẩm, giỏ hàng,...
+- Các tính năng `customer`: load / filter sản phẩm, giỏ hàng.
 
 **Nguyễn Thành Trung**
 - HTML/CSS giao diện.
