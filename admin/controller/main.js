@@ -65,7 +65,7 @@ window.deleteProduct = function (id) {
 };
 
 // Lấy thông tin từ form và validate
-function getProductData(isEdit = false) {
+function getProductData() {
   const id = document.getElementById("phoneId").value;
   const name = document.getElementById("phoneName").value;
   const price = document.getElementById("phonePrice").value;
@@ -75,12 +75,7 @@ function getProductData(isEdit = false) {
 
   // Kiểm tra Validation
   let isValid = true;
-  if (!isEdit) {
-    isValid &= validation.checkEmpty(id, "tbPhoneId", "Mã sản phẩm không được để trống");
-    if (id.trim() !== "") {
-      isValid &= validation.checkDuplicateId(id, currentProductList, "tbPhoneId", "Mã sản phẩm đã tồn tại");
-    }
-  }
+  isValid &= validation.checkEmpty(id, "tbPhoneId", "Mã sản phẩm không được để trống");
   isValid &= validation.checkEmpty(name, "tbPhoneName", "Tên không được để trống");
   isValid &= validation.checkPrice(price, "tbPhonePrice", "Giá phải là số lớn hơn 0");
   isValid &= validation.checkSelect("phoneType", "tbPhoneType", "Vui lòng chọn phân loại");
